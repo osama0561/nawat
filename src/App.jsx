@@ -37,7 +37,7 @@ function Layout() {
       {/* Don't show dark footer on light pro-bono page */}
       {!isProBono && <Footer />}
       {isProBono && (
-        <footer className="py-6 text-center text-xs" style={{ background: '#EDE9E0', color: '#999' }}>
+        <footer className="py-6 text-center text-xs" style={{ background: '#F2EDE4', color: 'rgba(27,58,92,0.5)' }}>
           © {new Date().getFullYear()} نواة القانون — جميع الحقوق محفوظة
         </footer>
       )}

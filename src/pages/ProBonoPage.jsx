@@ -94,23 +94,23 @@ export default function ProBonoPage() {
   };
 
   return (
-    <div style={{ background: '#F5F3EE', minHeight: '100vh', color: '#0D0D12' }}>
+    <div style={{ background: '#FAF8F3', minHeight: '100vh', color: '#1B3A5C' }}>
       {/* Hero */}
       <section
         ref={heroRef}
         className="pt-32 pb-16 px-6"
-        style={{ background: 'linear-gradient(to bottom, #EDE9E0, #F5F3EE)' }}
+        style={{ background: 'linear-gradient(to bottom, #EDE9E0, #FAF8F3)' }}
       >
         <div className="max-w-3xl mx-auto text-center">
           <div className="pb-hero-text inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 opacity-0"
-            style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)' }}
+            style={{ background: 'rgba(27,58,92,0.12)', border: '1px solid rgba(27,58,92,0.25)' }}
           >
-            <Heart size={28} className="text-champagne" />
+            <Heart size={28} style={{ color: '#1B3A5C' }} />
           </div>
-          <h1 className="pb-hero-text text-4xl md:text-6xl font-semibold mb-4 leading-tight opacity-0" style={{ color: '#0D0D12' }}>
+          <h1 className="pb-hero-text text-4xl md:text-6xl font-semibold mb-4 leading-tight opacity-0" style={{ color: '#1B3A5C' }}>
             الخدمة المجتمعية
             <br />
-            <span className="font-display italic" style={{ color: '#C9A84C' }}>لوجه الله</span>
+            <span className="font-display italic" style={{ color: '#1B3A5C' }}>لوجه الله</span>
           </h1>
           <p className="pb-hero-text text-base md:text-lg leading-relaxed opacity-0" style={{ color: '#4a4a4a' }}>
             تطوع قانوني — Pro Bono
@@ -135,7 +135,7 @@ export default function ProBonoPage() {
 
           {/* Eligibility */}
           <div className="rounded-[1.5rem] p-8 mb-12" style={{ background: 'white', border: '1px solid #e5e0d5' }}>
-            <h2 className="text-xl font-semibold mb-5" style={{ color: '#0D0D12' }}>معايير الأهلية</h2>
+            <h2 className="text-xl font-semibold mb-5" style={{ color: '#1B3A5C' }}>معايير الأهلية</h2>
             <p className="text-sm mb-5" style={{ color: '#666' }}>
               لا توجد معايير صارمة — نحكم بالفهم والتقدير. لكن نأخذ في الاعتبار عادةً:
             </p>
@@ -146,7 +146,7 @@ export default function ProBonoPage() {
                 'غياب خيارات قانونية أخرى متاحة للمتقدم',
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <CheckCircle size={18} className="mt-0.5 shrink-0" style={{ color: '#C9A84C' }} />
+                  <CheckCircle size={18} className="mt-0.5 shrink-0" style={{ color: '#1B3A5C' }} />
                   <span className="text-sm leading-relaxed" style={{ color: '#333' }}>{item}</span>
                 </li>
               ))}
@@ -155,9 +155,9 @@ export default function ProBonoPage() {
 
           {/* Form or Success */}
           {submitted ? (
-            <div className="rounded-[1.5rem] p-10 text-center" style={{ background: 'white', border: '1px solid #C9A84C' }}>
-              <CheckCircle size={48} className="mx-auto mb-5" style={{ color: '#C9A84C' }} />
-              <h2 className="text-2xl font-semibold mb-3" style={{ color: '#0D0D12' }}>
+            <div className="rounded-[1.5rem] p-10 text-center" style={{ background: 'white', border: '1px solid #1B3A5C' }}>
+              <CheckCircle size={48} className="mx-auto mb-5" style={{ color: '#1B3A5C' }} />
+              <h2 className="text-2xl font-semibold mb-3" style={{ color: '#1B3A5C' }}>
                 تم استلام طلبك
               </h2>
               <p className="text-base leading-relaxed" style={{ color: '#555' }}>
@@ -173,7 +173,7 @@ export default function ProBonoPage() {
               noValidate
             >
               <div>
-                <h2 className="text-2xl font-semibold mb-1" style={{ color: '#0D0D12' }}>
+                <h2 className="text-2xl font-semibold mb-1" style={{ color: '#1B3A5C' }}>
                   تقدم بطلبك
                 </h2>
                 <p className="text-sm" style={{ color: '#888' }}>
@@ -184,7 +184,7 @@ export default function ProBonoPage() {
               {/* Name */}
               <div>
                 <label className="block text-sm font-medium mb-2" style={{ color: '#333' }}>
-                  الاسم الكامل <span style={{ color: '#C9A84C' }}>*</span>
+                  الاسم الكامل <span style={{ color: '#1B3A5C' }}>*</span>
                 </label>
                 <input
                   type="text"
@@ -199,7 +199,7 @@ export default function ProBonoPage() {
               {/* Phone */}
               <div>
                 <label className="block text-sm font-medium mb-2" style={{ color: '#333' }}>
-                  رقم الجوال <span style={{ color: '#C9A84C' }}>*</span>
+                  رقم الجوال <span style={{ color: '#1B3A5C' }}>*</span>
                   <span className="text-xs font-normal mr-2" style={{ color: '#888' }}>(واتساب مفضل)</span>
                 </label>
                 <input
@@ -234,7 +234,7 @@ export default function ProBonoPage() {
               {/* Problem type */}
               <div>
                 <label className="block text-sm font-medium mb-2" style={{ color: '#333' }}>
-                  نوع المشكلة القانونية <span style={{ color: '#C9A84C' }}>*</span>
+                  نوع المشكلة القانونية <span style={{ color: '#1B3A5C' }}>*</span>
                 </label>
                 <select
                   className="form-input"
@@ -253,7 +253,7 @@ export default function ProBonoPage() {
               {/* Description */}
               <div>
                 <label className="block text-sm font-medium mb-2" style={{ color: '#333' }}>
-                  وصف المشكلة <span style={{ color: '#C9A84C' }}>*</span>
+                  وصف المشكلة <span style={{ color: '#1B3A5C' }}>*</span>
                 </label>
                 <textarea
                   className="form-input resize-none"
@@ -276,7 +276,7 @@ export default function ProBonoPage() {
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
-                    className="mt-1 w-4 h-4 accent-champagne shrink-0"
+                    className="mt-1 w-4 h-4 [accent-color:#1B3A5C] shrink-0"
                     checked={form.confirmed}
                     onChange={(e) => handleChange('confirmed', e.target.checked)}
                   />
@@ -292,8 +292,8 @@ export default function ProBonoPage() {
                 disabled={loading}
                 className="w-full py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:scale-[1.02]"
                 style={{
-                  background: '#C9A84C',
-                  color: '#0D0D12',
+                  background: '#1B3A5C',
+                  color: '#F2EDE4',
                   opacity: loading ? 0.7 : 1,
                   transitionTimingFunction: 'cubic-bezier(0.25,0.46,0.45,0.94)',
                 }}

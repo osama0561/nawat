@@ -4,40 +4,43 @@ import { Mail, Phone, MapPin, MessageSquare, UserCheck, Send, CheckCircle, Alert
 import CONFIG from '../config';
 import SERVICES from '../data/services';
 
-// ── Contact gate choices ──
 function ContactGate({ onChoice }) {
   return (
     <div className="max-w-lg mx-auto text-center py-12">
-      <h2 className="text-2xl md:text-3xl font-semibold text-ivory mb-3">
+      <h2 className="text-2xl md:text-3xl font-semibold mb-3" style={{ color: '#F2EDE4' }}>
         كيف تفضل التواصل معنا؟
       </h2>
-      <p className="text-ivory/50 text-sm mb-10">اختر الطريقة الأنسب لك</p>
+      <p className="text-sm mb-10" style={{ color: 'rgba(242,237,228,0.5)' }}>اختر الطريقة الأنسب لك</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Option 1 — Register email */}
         <button
           onClick={() => onChoice('email')}
-          className="group bg-slate hover:border-champagne/40 border border-transparent rounded-[1.5rem] p-7 text-right transition-all duration-300 hover:-translate-y-1"
+          className="rounded-[1.5rem] p-7 text-right transition-all duration-300 hover:-translate-y-1"
+          style={{ background: 'rgba(242,237,228,0.07)', border: '1px solid rgba(242,237,228,0.12)' }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.3)'}
+          onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.12)'}
         >
-          <div className="w-12 h-12 rounded-2xl bg-champagne/10 border border-champagne/20 flex items-center justify-center mb-4 group-hover:bg-champagne/15 transition-colors">
-            <UserCheck size={22} className="text-champagne" />
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style={{ background: 'rgba(242,237,228,0.1)', border: '1px solid rgba(242,237,228,0.2)' }}>
+            <UserCheck size={22} style={{ color: '#F2EDE4' }} />
           </div>
-          <h3 className="text-base font-semibold text-ivory mb-2">سجّل بريدك لمتابعة حالتك</h3>
-          <p className="text-ivory/50 text-xs leading-relaxed">
+          <h3 className="text-base font-semibold mb-2" style={{ color: '#F2EDE4' }}>سجّل بريدك لمتابعة حالتك</h3>
+          <p className="text-xs leading-relaxed" style={{ color: 'rgba(242,237,228,0.5)' }}>
             أدخل بريدك الإلكتروني وسنرسل لك تأكيداً وتحديثات حول طلبك.
           </p>
         </button>
 
-        {/* Option 2 — Direct */}
         <button
           onClick={() => onChoice('direct')}
-          className="group bg-slate hover:border-white/20 border border-transparent rounded-[1.5rem] p-7 text-right transition-all duration-300 hover:-translate-y-1"
+          className="rounded-[1.5rem] p-7 text-right transition-all duration-300 hover:-translate-y-1"
+          style={{ background: 'rgba(242,237,228,0.04)', border: '1px solid rgba(242,237,228,0.08)' }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.2)'}
+          onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.08)'}
         >
-          <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:bg-white/10 transition-colors">
-            <MessageSquare size={22} className="text-ivory/70" />
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style={{ background: 'rgba(242,237,228,0.05)', border: '1px solid rgba(242,237,228,0.1)' }}>
+            <MessageSquare size={22} style={{ color: 'rgba(242,237,228,0.7)' }} />
           </div>
-          <h3 className="text-base font-semibold text-ivory mb-2">تواصل مباشرة بدون تسجيل</h3>
-          <p className="text-ivory/50 text-xs leading-relaxed">
+          <h3 className="text-base font-semibold mb-2" style={{ color: '#F2EDE4' }}>تواصل مباشرة بدون تسجيل</h3>
+          <p className="text-xs leading-relaxed" style={{ color: 'rgba(242,237,228,0.5)' }}>
             أرسل رسالتك مباشرة بدون أي التزامات. سنرد عليك في أقرب وقت.
           </p>
         </button>
@@ -46,7 +49,6 @@ function ContactGate({ onChoice }) {
   );
 }
 
-// ── Email registration step ──
 function EmailRegistration({ onConfirm }) {
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
@@ -54,7 +56,6 @@ function EmailRegistration({ onConfirm }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email.trim()) return;
-    // In production, send confirmation email here
     console.log('[Contact Gate] Email registered:', email);
     setSent(true);
     setTimeout(() => onConfirm(email), 1500);
@@ -63,44 +64,27 @@ function EmailRegistration({ onConfirm }) {
   if (sent) {
     return (
       <div className="max-w-md mx-auto text-center py-8">
-        <CheckCircle size={40} className="text-champagne mx-auto mb-3" />
-        <p className="text-ivory/80 text-sm">تم تسجيل بريدك — سنتابع طلبك...</p>
+        <CheckCircle size={40} className="mx-auto mb-3" style={{ color: '#F2EDE4' }} />
+        <p className="text-sm" style={{ color: 'rgba(242,237,228,0.8)' }}>تم تسجيل بريدك — سنتابع طلبك...</p>
       </div>
     );
   }
 
   return (
     <div className="max-w-md mx-auto py-10">
-      <h3 className="text-xl font-semibold text-ivory mb-2">أدخل بريدك الإلكتروني</h3>
-      <p className="text-ivory/50 text-sm mb-6">لمتابعة حالة طلبك وتلقي التأكيد</p>
+      <h3 className="text-xl font-semibold mb-2" style={{ color: '#F2EDE4' }}>أدخل بريدك الإلكتروني</h3>
+      <p className="text-sm mb-6" style={{ color: 'rgba(242,237,228,0.5)' }}>لمتابعة حالة طلبك وتلقي التأكيد</p>
       <form onSubmit={handleSubmit} className="flex gap-3">
-        <input
-          type="email"
-          required
-          className="form-input-dark flex-1"
-          placeholder="example@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          dir="ltr"
-          style={{ textAlign: 'right' }}
-        />
-        <button type="submit" className="btn-primary px-5 py-3 shrink-0">
-          <Send size={16} />
-        </button>
+        <input type="email" required className="form-input-dark flex-1" placeholder="example@email.com"
+          value={email} onChange={(e) => setEmail(e.target.value)} dir="ltr" style={{ textAlign: 'right' }} />
+        <button type="submit" className="btn-primary px-5 py-3 shrink-0"><Send size={16} /></button>
       </form>
     </div>
   );
 }
 
-// ── Main contact form ──
 function ContactForm({ prefillEmail }) {
-  const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    email: prefillEmail || '',
-    service: '',
-    message: '',
-  });
+  const [form, setForm] = useState({ name: '', phone: '', email: prefillEmail || '', service: '', message: '' });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -119,19 +103,11 @@ function ContactForm({ prefillEmail }) {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
     setLoading(true);
-
     const payload = { ...form, submittedAt: new Date().toISOString() };
     if (CONFIG.CONTACT_WEBHOOK_URL) {
-      try {
-        await fetch(CONFIG.CONTACT_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-      } catch (err) { console.error(err); }
-    } else {
-      console.log('[Contact Form]', payload);
-    }
+      try { await fetch(CONFIG.CONTACT_WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); }
+      catch (err) { console.error(err); }
+    } else { console.log('[Contact Form]', payload); }
     setLoading(false);
     setSubmitted(true);
   };
@@ -144,100 +120,54 @@ function ContactForm({ prefillEmail }) {
   if (submitted) {
     return (
       <div className="text-center py-12">
-        <CheckCircle size={48} className="text-champagne mx-auto mb-4" />
-        <h3 className="text-2xl font-semibold text-ivory mb-2">تم إرسال رسالتك</h3>
-        <p className="text-ivory/60 text-sm">سنتواصل معك في أقرب وقت ممكن.</p>
+        <CheckCircle size={48} className="mx-auto mb-4" style={{ color: '#F2EDE4' }} />
+        <h3 className="text-2xl font-semibold mb-2" style={{ color: '#F2EDE4' }}>تم إرسال رسالتك</h3>
+        <p className="text-sm" style={{ color: 'rgba(242,237,228,0.6)' }}>سنتواصل معك في أقرب وقت ممكن.</p>
       </div>
     );
   }
+
+  const labelStyle = { color: 'rgba(242,237,228,0.8)' };
+  const reqStyle = { color: '#F2EDE4' };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-ivory/80 mb-2">
-            الاسم <span className="text-champagne">*</span>
-          </label>
-          <input
-            type="text"
-            className="form-input-dark"
-            placeholder="اسمك الكامل"
-            value={form.name}
-            onChange={(e) => handleChange('name', e.target.value)}
-          />
-          {errors.name && <DarkFieldError msg={errors.name} />}
+          <label className="block text-sm font-medium mb-2" style={labelStyle}>الاسم <span style={reqStyle}>*</span></label>
+          <input type="text" className="form-input-dark" placeholder="اسمك الكامل" value={form.name} onChange={(e) => handleChange('name', e.target.value)} />
+          {errors.name && <FieldError msg={errors.name} />}
         </div>
         <div>
-          <label className="block text-sm font-medium text-ivory/80 mb-2">
-            الجوال <span className="text-champagne">*</span>
-          </label>
-          <input
-            type="tel"
-            className="form-input-dark"
-            placeholder="05XXXXXXXX"
-            value={form.phone}
-            onChange={(e) => handleChange('phone', e.target.value)}
-            dir="ltr"
-            style={{ textAlign: 'right' }}
-          />
-          {errors.phone && <DarkFieldError msg={errors.phone} />}
+          <label className="block text-sm font-medium mb-2" style={labelStyle}>الجوال <span style={reqStyle}>*</span></label>
+          <input type="tel" className="form-input-dark" placeholder="05XXXXXXXX" value={form.phone} onChange={(e) => handleChange('phone', e.target.value)} dir="ltr" style={{ textAlign: 'right' }} />
+          {errors.phone && <FieldError msg={errors.phone} />}
         </div>
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-ivory/80 mb-2">البريد الإلكتروني</label>
-        <input
-          type="email"
-          className="form-input-dark"
-          placeholder="example@email.com"
-          value={form.email}
-          onChange={(e) => handleChange('email', e.target.value)}
-          dir="ltr"
-          style={{ textAlign: 'right' }}
-        />
+        <label className="block text-sm font-medium mb-2" style={labelStyle}>البريد الإلكتروني</label>
+        <input type="email" className="form-input-dark" placeholder="example@email.com" value={form.email} onChange={(e) => handleChange('email', e.target.value)} dir="ltr" style={{ textAlign: 'right' }} />
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-ivory/80 mb-2">الخدمة المطلوبة</label>
-        <select
-          className="form-input-dark"
-          value={form.service}
-          onChange={(e) => handleChange('service', e.target.value)}
-        >
+        <label className="block text-sm font-medium mb-2" style={labelStyle}>الخدمة المطلوبة</label>
+        <select className="form-input-dark" value={form.service} onChange={(e) => handleChange('service', e.target.value)}>
           <option value="">اختر الخدمة (اختياري)...</option>
-          {SERVICES.map((s) => (
-            <option key={s.id} value={s.name}>{s.name}</option>
-          ))}
+          {SERVICES.map((s) => <option key={s.id} value={s.name}>{s.name}</option>)}
         </select>
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-ivory/80 mb-2">
-          رسالتك <span className="text-champagne">*</span>
-        </label>
-        <textarea
-          className="form-input-dark resize-none"
-          rows={5}
-          placeholder="اشرح احتياجك القانوني..."
-          value={form.message}
-          onChange={(e) => handleChange('message', e.target.value)}
-        />
-        {errors.message && <DarkFieldError msg={errors.message} />}
+        <label className="block text-sm font-medium mb-2" style={labelStyle}>رسالتك <span style={reqStyle}>*</span></label>
+        <textarea className="form-input-dark resize-none" rows={5} placeholder="اشرح احتياجك القانوني..." value={form.message} onChange={(e) => handleChange('message', e.target.value)} />
+        {errors.message && <FieldError msg={errors.message} />}
       </div>
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="btn-primary w-full justify-center"
-        style={{ opacity: loading ? 0.7 : 1 }}
-      >
+      <button type="submit" disabled={loading} className="btn-primary w-full justify-center" style={{ opacity: loading ? 0.7 : 1 }}>
         {loading ? 'جارٍ الإرسال...' : 'إرسال الرسالة'}
       </button>
     </form>
   );
 }
 
-function DarkFieldError({ msg }) {
+function FieldError({ msg }) {
   return (
     <div className="flex items-center gap-1.5 mt-1.5">
       <AlertCircle size={13} className="text-red-400" />
@@ -246,90 +176,66 @@ function DarkFieldError({ msg }) {
   );
 }
 
-// ── Main Page ──
 export default function ContactPage() {
-  const [gateChoice, setGateChoice] = useState(null); // null | 'email' | 'direct'
+  const [gateChoice, setGateChoice] = useState(null);
   const [prefillEmail, setPrefillEmail] = useState('');
   const heroRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.contact-hero-text',
-        { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: 'power3.out', delay: 0.2 }
-      );
+      gsap.fromTo('.contact-hero-text', { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: 'power3.out', delay: 0.2 });
     }, heroRef);
     return () => ctx.revert();
   }, []);
 
-  const handleGateChoice = (choice) => setGateChoice(choice);
-  const handleEmailConfirm = (email) => {
-    setPrefillEmail(email);
-    setGateChoice('form-ready');
-  };
-
   return (
     <>
       {/* Hero */}
-      <section
-        ref={heroRef}
-        className="relative pt-32 pb-20 noise-overlay"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+      <section ref={heroRef} className="relative pt-32 pb-20 noise-overlay"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
-        <div className="absolute inset-0 bg-obsidian/88 z-10" />
+        <div className="absolute inset-0 z-10" style={{ background: 'rgba(13,31,51,0.88)' }} />
         <div className="relative z-20 max-w-7xl mx-auto px-6">
-          <p className="contact-hero-text text-champagne text-xs font-mono tracking-widest uppercase mb-4 opacity-0" style={{ fontFamily: 'IBM Plex Mono' }}>
-            ابدأ الآن
-          </p>
-          <h1 className="contact-hero-text text-4xl md:text-6xl font-semibold text-ivory mb-4 opacity-0">
-            تواصل <span className="font-display italic text-champagne">معنا</span>
+          <p className="contact-hero-text text-xs font-mono tracking-widest uppercase mb-4 opacity-0" style={{ color: 'rgba(242,237,228,0.7)', fontFamily: 'IBM Plex Mono' }}>ابدأ الآن</p>
+          <h1 className="contact-hero-text text-4xl md:text-6xl font-semibold mb-4 opacity-0" style={{ color: '#F2EDE4' }}>
+            تواصل <span className="font-display italic" style={{ color: '#FAF8F3' }}>معنا</span>
           </h1>
-          <p className="contact-hero-text text-ivory/60 text-base md:text-lg max-w-xl opacity-0">
+          <p className="contact-hero-text text-base md:text-lg max-w-xl opacity-0" style={{ color: 'rgba(242,237,228,0.6)' }}>
             مشكلتك القانونية تستحق إجابة واضحة. نحن هنا للاستماع والمساعدة.
           </p>
         </div>
       </section>
 
       {/* Main content */}
-      <section className="bg-obsidian py-16">
+      <section className="py-16" style={{ background: '#1B3A5C' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Left — Form area */}
-            <div className="bg-slate rounded-[2rem] p-8 md:p-10">
-              {!gateChoice && (
-                <ContactGate onChoice={handleGateChoice} />
-              )}
-              {gateChoice === 'email' && (
-                <EmailRegistration onConfirm={handleEmailConfirm} />
-              )}
+            {/* Form area */}
+            <div className="rounded-[2rem] p-8 md:p-10" style={{ background: 'rgba(13,31,51,0.7)', border: '1px solid rgba(242,237,228,0.08)' }}>
+              {!gateChoice && <ContactGate onChoice={setGateChoice} />}
+              {gateChoice === 'email' && <EmailRegistration onConfirm={(email) => { setPrefillEmail(email); setGateChoice('form-ready'); }} />}
               {(gateChoice === 'direct' || gateChoice === 'form-ready') && (
                 <div>
-                  <h2 className="text-2xl font-semibold text-ivory mb-2">أرسل رسالتك</h2>
-                  <p className="text-ivory/50 text-sm mb-8">سنرد عليك خلال ٢٤ ساعة في أيام العمل</p>
+                  <h2 className="text-2xl font-semibold mb-2" style={{ color: '#F2EDE4' }}>أرسل رسالتك</h2>
+                  <p className="text-sm mb-8" style={{ color: 'rgba(242,237,228,0.5)' }}>سنرد عليك خلال ٢٤ ساعة في أيام العمل</p>
                   <ContactForm prefillEmail={prefillEmail} />
                 </div>
               )}
             </div>
 
-            {/* Right — Direct contact */}
+            {/* Direct contact */}
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-semibold text-ivory mb-2">تواصل مباشر</h2>
-                <p className="text-ivory/50 text-sm">تفضل بالتواصل المباشر معنا عبر القنوات التالية</p>
+                <h2 className="text-2xl font-semibold mb-2" style={{ color: '#F2EDE4' }}>تواصل مباشر</h2>
+                <p className="text-sm" style={{ color: 'rgba(242,237,228,0.5)' }}>تفضل بالتواصل المباشر معنا عبر القنوات التالية</p>
               </div>
 
-              {/* WhatsApp — prominent */}
-              <a
-                href={CONFIG.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 rounded-[1.5rem] bg-green-900/20 border border-green-700/30 hover:border-green-500/50 transition-all duration-300 group"
+              {/* WhatsApp */}
+              <a href={CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-4 p-5 rounded-[1.5rem] transition-all duration-300"
+                style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)' }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(34,197,94,0.5)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(34,197,94,0.25)'}
               >
                 <div className="w-12 h-12 rounded-2xl bg-green-600 flex items-center justify-center shrink-0">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
@@ -337,57 +243,57 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-green-400 mb-0.5">واتساب</p>
-                  <p className="text-ivory/70 text-sm" dir="ltr">{CONFIG.whatsapp}</p>
+                  <p className="text-sm font-semibold mb-0.5 text-green-400">واتساب</p>
+                  <p className="text-sm" style={{ color: 'rgba(242,237,228,0.7)' }} dir="ltr">{CONFIG.whatsapp}</p>
                 </div>
               </a>
 
               {/* Email */}
-              <a
-                href={`mailto:${CONFIG.email}`}
-                className="flex items-center gap-4 p-5 rounded-[1.5rem] bg-slate border border-white/5 hover:border-champagne/20 transition-all duration-300"
+              <a href={`mailto:${CONFIG.email}`} className="flex items-center gap-4 p-5 rounded-[1.5rem] transition-all duration-300"
+                style={{ background: 'rgba(242,237,228,0.05)', border: '1px solid rgba(242,237,228,0.08)' }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.2)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.08)'}
               >
-                <div className="w-12 h-12 rounded-2xl bg-champagne/10 border border-champagne/20 flex items-center justify-center shrink-0">
-                  <Mail size={20} className="text-champagne" />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(242,237,228,0.1)', border: '1px solid rgba(242,237,228,0.15)' }}>
+                  <Mail size={20} style={{ color: '#F2EDE4' }} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-ivory mb-0.5">البريد الإلكتروني</p>
-                  <p className="text-ivory/60 text-sm">{CONFIG.email}</p>
+                  <p className="text-sm font-semibold mb-0.5" style={{ color: '#F2EDE4' }}>البريد الإلكتروني</p>
+                  <p className="text-sm" style={{ color: 'rgba(242,237,228,0.6)' }}>{CONFIG.email}</p>
                 </div>
               </a>
 
               {/* Phone */}
-              <a
-                href={`tel:${CONFIG.phone}`}
-                className="flex items-center gap-4 p-5 rounded-[1.5rem] bg-slate border border-white/5 hover:border-champagne/20 transition-all duration-300"
+              <a href={`tel:${CONFIG.phone}`} className="flex items-center gap-4 p-5 rounded-[1.5rem] transition-all duration-300"
+                style={{ background: 'rgba(242,237,228,0.05)', border: '1px solid rgba(242,237,228,0.08)' }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.2)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(242,237,228,0.08)'}
               >
-                <div className="w-12 h-12 rounded-2xl bg-champagne/10 border border-champagne/20 flex items-center justify-center shrink-0">
-                  <Phone size={20} className="text-champagne" />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(242,237,228,0.1)', border: '1px solid rgba(242,237,228,0.15)' }}>
+                  <Phone size={20} style={{ color: '#F2EDE4' }} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-ivory mb-0.5">الهاتف</p>
-                  <p className="text-ivory/60 text-sm" dir="ltr">{CONFIG.phone}</p>
+                  <p className="text-sm font-semibold mb-0.5" style={{ color: '#F2EDE4' }}>الهاتف</p>
+                  <p className="text-sm" style={{ color: 'rgba(242,237,228,0.6)' }} dir="ltr">{CONFIG.phone}</p>
                 </div>
               </a>
 
               {/* Address */}
-              <div className="flex items-center gap-4 p-5 rounded-[1.5rem] bg-slate border border-white/5">
-                <div className="w-12 h-12 rounded-2xl bg-champagne/10 border border-champagne/20 flex items-center justify-center shrink-0">
-                  <MapPin size={20} className="text-champagne" />
+              <div className="flex items-center gap-4 p-5 rounded-[1.5rem]" style={{ background: 'rgba(242,237,228,0.04)', border: '1px solid rgba(242,237,228,0.07)' }}>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(242,237,228,0.08)', border: '1px solid rgba(242,237,228,0.12)' }}>
+                  <MapPin size={20} style={{ color: '#F2EDE4' }} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-ivory mb-0.5">الموقع</p>
-                  <p className="text-ivory/60 text-sm">{CONFIG.address}</p>
+                  <p className="text-sm font-semibold mb-0.5" style={{ color: '#F2EDE4' }}>الموقع</p>
+                  <p className="text-sm" style={{ color: 'rgba(242,237,228,0.6)' }}>{CONFIG.address}</p>
                 </div>
               </div>
 
-              {/* Working hours note */}
-              <div className="p-5 rounded-[1.5rem] bg-champagne/5 border border-champagne/10">
-                <p className="text-xs text-champagne/80 font-mono mb-1" style={{ fontFamily: 'IBM Plex Mono' }}>
-                  ساعات العمل
-                </p>
-                <p className="text-ivory/60 text-sm">الأحد – الخميس: ٩ص – ٦م</p>
-                <p className="text-ivory/40 text-xs mt-1">نرد على واتساب خارج ساعات العمل حسب الإمكانية</p>
+              {/* Working hours */}
+              <div className="p-5 rounded-[1.5rem]" style={{ background: 'rgba(242,237,228,0.05)', border: '1px solid rgba(242,237,228,0.08)' }}>
+                <p className="text-xs mb-1" style={{ color: 'rgba(242,237,228,0.7)', fontFamily: 'IBM Plex Mono' }}>ساعات العمل</p>
+                <p className="text-sm" style={{ color: 'rgba(242,237,228,0.7)' }}>الأحد – الخميس: ٩ص – ٦م</p>
+                <p className="text-xs mt-1" style={{ color: 'rgba(242,237,228,0.4)' }}>نرد على واتساب خارج ساعات العمل حسب الإمكانية</p>
               </div>
             </div>
           </div>

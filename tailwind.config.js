@@ -7,11 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        obsidian: '#0D0D12',
-        champagne: '#C9A84C',
-        ivory: '#FAF8F5',
-        slate: '#1C1C24',
-        warmWhite: '#F5F3EE',
+        obsidian: '#0D1F33',
+        navy: '#1B3A5C',
+        champagne: '#1B3A5C',
+        ivory: '#F2EDE4',
+        slate: '#1B3A5C',
+        warmWhite: '#FAF8F3',
+        cream: '#F2EDE4',
       },
       fontFamily: {
         sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
